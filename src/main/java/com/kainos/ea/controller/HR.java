@@ -125,7 +125,7 @@ public class HR {
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
         }
     }
-     @GET
+    @GET
     @Path("/ConorMcGee")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getConor() {
