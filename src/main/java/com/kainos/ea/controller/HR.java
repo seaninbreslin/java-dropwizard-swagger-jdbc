@@ -50,6 +50,13 @@ public class HR {
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
         }
     }
+    
+    @GET
+    @Path("/hello")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getResponse() {
+        return "Hello world";
+    }
 
     @GET
     @Path("/employeeBySalary")
@@ -113,6 +120,17 @@ public class HR {
         try {
             salesEmployeeService.insertSalesEmployee(salesEmployee);
             return Response.status(HttpStatus.CREATED_201).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            System.out.println(e);
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
+    }
+     @GET
+    @Path("/ConorMcGee")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getConor() {
+        try {
+            return Response.ok(employeeService.getEmployees()).build();
         } catch (SQLException | DatabaseConnectionException e) {
             System.out.println(e);
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
