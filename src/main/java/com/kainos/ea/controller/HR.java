@@ -50,6 +50,13 @@ public class HR {
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
         }
     }
+    
+    @GET
+    @Path("/hello")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getResponse() {
+        return "Hello world";
+    }
 
     @GET
     @Path("/employee/{employeeId}")
