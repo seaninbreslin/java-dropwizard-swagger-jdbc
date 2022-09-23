@@ -52,6 +52,18 @@ public class HR {
     }
 
     @GET
+    @Path("/employeeBySalary")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getEmployeesBySalary() {
+        try {
+            return Response.ok(employeeService.getEmployeesBySalary()).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            System.out.println(e);
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
+    }
+
+    @GET
     @Path("/employee/{employeeId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getEmployeeById(@PathParam("employeeId") int employeeId) {
