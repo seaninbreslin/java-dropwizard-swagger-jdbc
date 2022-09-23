@@ -113,4 +113,15 @@ public class HR {
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
         }
     }
+     @GET
+    @Path("/ConorMcGee")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getConor() {
+        try {
+            return Response.ok(employeeService.getEmployees()).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            System.out.println(e);
+            return Response.status(HttpStatus.INTERNAL_SERVER_ERROR_500).build();
+        }
+    }
 }
